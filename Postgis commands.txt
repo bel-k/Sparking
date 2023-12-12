@@ -1,0 +1,45 @@
+--run postgis on docker
+docker exec -it bf4a95c1bd95 psql -U smartparking -d smartparkingdb
+-- check tables in db
+\dt
+-- describe table 
+\d+ location
+-- insert row 
+INSERT INTO location (location_geometry) VALUES (ST_GeomFromText('POINT(40.7128 -74.0060)'));
+-- select rows from database
+
+//media
+INSERT INTO location (location_geometry) VALUES (ST_GeomFromText('POINT(33.63679030634622 -7.4864711795771814)'));
+INSERT INTO location (location_geometry) VALUES (ST_GeomFromText('POINT(33.70743589706303 -7.364059401371382)'));
+INSERT INTO location (location_geometry) VALUES (ST_GeomFromText('POINT(33.710363288687624 -7.347365333106097)'));
+INSERT INTO location (location_geometry) VALUES (ST_GeomFromText('POINT(33.72478459079447 -7.3196420206024655)'));
+//kenitra
+INSERT INTO location (location_geometry) VALUES (ST_GeomFromText('POINT(34.25691316456454 -6.652458104923124)'));
+INSERT INTO location (location_geometry) VALUES (ST_GeomFromText('POINT(34.2486261254542 -6.623648847486058)'));
+INSERT INTO location (location_geometry) VALUES (ST_GeomFromText('POINT(34.25139304921452 -6.585196700122945)'));
+INSERT INTO location (location_geometry) VALUES (ST_GeomFromText('POINT(34.2661484381417 -6.613692488023761)'));
+
+
+
+INSERT INTO parking (name, description, availability_status, location_id) VALUES ('Park1', 'Park Desc 1', true, 1);
+INSERT INTO parking (name, description, availability_status, location_id) VALUES ('Park2', 'Park Desc 2', true, 2);
+INSERT INTO parking (name, description, availability_status, location_id) VALUES ('Park3', 'Park Desc 3', true, 3);
+INSERT INTO parking (name, description, availability_status, location_id) VALUES ('Park4', 'Park Desc 4', true, 4);
+INSERT INTO parking (name, description, availability_status, location_id) VALUES ('Park5', 'Park Desc 5', true, 5);
+INSERT INTO parking (name, description, availability_status, location_id) VALUES ('Park11', 'Park Desc 11', true, 11);
+INSERT INTO parking (name, description, availability_status, location_id) VALUES ('Park12', 'Park Desc 12', true, 12);
+INSERT INTO parking (name, description, availability_status, location_id) VALUES ('Park13', 'Park Desc 13', true, 13);
+INSERT INTO parking (name, description, availability_status, location_id) VALUES ('Park14', 'Park Desc 14', true, 14);
+INSERT INTO parking (name, description, availability_status, location_id) VALUES ('Park15', 'Park Desc 15', true, 15);
+
+/*Test sur nearby*/
+SELECT * FROM PARKING P, Location L WHERE L.id = P.location_id 
+AND ST_DWithin(L.location_geometry, ST_GeogFromText('POINT(33.63679030634622 -7.4864711795771814)'), 1000);
+
+/*Save some sessions*/
+INSERT INTO Session (id, location_id) VALUES (1,1);
+INSERT INTO Session (id, location_id) VALUES (2,2);
+INSERT INTO Session (id, location_id) VALUES (3,3);
+INSERT INTO Session (id, location_id) VALUES (4,4);
+
+

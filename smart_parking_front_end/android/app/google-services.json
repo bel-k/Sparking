@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "868247640888",
+    "project_id": "smart-parking-272",
+    "storage_bucket": "smart-parking-272.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:868247640888:android:1eae207839dfc5bc823fcd",
+        "android_client_info": {
+          "package_name": "com.example.smart_parking_front_end"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHYIu0qJmBhwRMm4rNnlbYJlpVjVdibEc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
